@@ -1,0 +1,39 @@
+﻿<Window x:Class="member_management.Views.AmendMemberInfoWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True" Width="300" Height="300">
+    <Grid Width="300" Height="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"  Margin="0, 10, 0, 0" DataContext="{Binding OriginalUserInfo}">
+            <!--<TextBlock Width="50" Text="{Binding MemberName}" Height="20" FontSize="8" HorizontalAlignment="Left" TextAlignment="Center" Margin="20, 0, 0, 0"  x:Name="MemberNameTextBlock"/>
+            <TextBlock Text ="{Binding MemberID}" Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" TextAlignment="Center" Margin="90, 0, 0, 0"  x:Name="MemberIDTextBlock"/>
+            <TextBlock Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" TextAlignment="Center" Margin="0, 0, 90, 0"  x:Name="MemberSexTextBlock"/>
+            <TextBlock Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" TextAlignment="Center" Margin="0, 0, 20, 0"  x:Name="MemberAgeTextBlock"/>-->
+        </Grid>
+        <Grid Grid.Row="3" Margin="0, 10, 0, 0">
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="20, 0, 0, 0"
+                     x:Name="MemberNameTextBox" Text="{Binding AmendName}" KeyboardNavigation.TabIndex="1" IsTabStop="True"/>
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="90, 0, 0, 0"
+                     x:Name="MemberIDTextBox" Text="{Binding AmendID}" KeyboardNavigation.TabIndex="2" IsTabStop="True"/>
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 90, 0"
+                     x:Name="MemberSexTextBox" Text="{Binding AmendSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True"/>
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 20, 0"
+                     x:Name="MemberAgeTextBox" Text="{Binding AmendAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="PreviewTextInput"/>
+        </Grid>
+        <Grid Grid.Row="5" Margin="0, 10, 0, 0">
+            <Button   x:Name="AmendInfo" Content="회원정보 수정" Command="{Binding AmendInfoCommand}" HorizontalAlignment="Left"
+                    Width="80" Height="20" FontSize="8" Margin="20,0,0,0" IsTabStop="False" VerticalAlignment="Top" Click="AmendInfo_Click"/>
+            <Button   x:Name="AmendCancle" Content="취소" Command="{Binding CancleCommand}" HorizontalAlignment="Left"
+                    Width="80" Height="20" FontSize="8" Margin="120,0,0,0" IsTabStop="False" VerticalAlignment="Top" Click="AmendInfo_Click"/>
+        </Grid>
+    </Grid>
+</Window>

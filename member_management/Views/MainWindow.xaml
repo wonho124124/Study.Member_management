@@ -1,0 +1,85 @@
+﻿<Window x:Class="member_management.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Width="300" Height="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Grid Grid.Row="1" Margin="0, 10, 0, 0">
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="20, 0, 0, 0"
+                     x:Name="MemberNameTextBox" Text="{Binding MemberName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" />
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="90, 0, 0, 0"
+                     x:Name="MemberIDTextBox" Text="{Binding MemberID}" KeyboardNavigation.TabIndex="2" IsTabStop="True"/>
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 90, 0"
+                     x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True"/>
+            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 20, 0"
+                     x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="PreviewTextInput"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0, 10, 0, 0">
+            <Button   x:Name="AddButton" Content="추가" Command="{Binding AddCommand}" HorizontalAlignment="Left"
+                    Width="50" Height="20" FontSize="8" Margin="20, 0, 0, 0" IsTabStop="False" Click="AddButton_Click"/>
+            <Button   x:Name="DeleteButton" Content="삭제" Command="{Binding DeleteCommand}" HorizontalAlignment="Left"
+                    Width="50" Height="20" FontSize="8" Margin="90, 0, 0, 0" IsTabStop="False"/>
+            <Button   x:Name="AmendButton" Content="수정" Command="{Binding AmendCommand}" HorizontalAlignment="Left"
+                    Width="50" Height="20" FontSize="8" Margin="160,0,0,0" IsTabStop="False" VerticalAlignment="Top" Click="AmendButton_Click"/>
+            <Button   x:Name="SaveButton" Content="저장" Command="{Binding SaveCommand}" HorizontalAlignment="Right"
+                    Width="50" Height="20" FontSize="8" Margin="0, 0, 20, 0" IsTabStop="False"/>
+        </Grid>
+
+        <Grid Grid.Row="5" Margin="0, 10, 0, 0">
+            <ListView x:Name="MemberListView" ItemsSource="{Binding MemberInfoList}" SelectedItem="{Binding SelectedMember}" Width="260" HorizontalAlignment="Center" BorderThickness="1" Height="150" FontSize="8">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="이름" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MemberName}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="회원 ID" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MemberID}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="성별" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MemberSex}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="나이" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MemberAge}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+    </Grid>
+
+</Window>
