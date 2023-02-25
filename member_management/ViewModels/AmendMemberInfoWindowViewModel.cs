@@ -55,11 +55,6 @@ namespace member_management.ViewModels
 
         private void AmendInfoCmd()
         {
-            /*OriginalInfo.MemberName = AmendName;
-            OriginalInfo.MemberID = AmendID;
-            OriginalInfo.MemberSex = AmendSex;
-            OriginalInfo.MemberAge = AmendAge;*/
-
             try
             {
                 if (!(AmendName == null) && !(AmendID == null) && !(AmendName == null) && !(AmendAge == 0))

@@ -145,11 +145,6 @@ namespace member_management.ViewModels
                     infos.MemberAge = Convert.ToInt16(this.MemberAge);
 
                     MemberInfoList.Add(infos);
-
-                    /*this.MemberName = null;
-                    this.MemberID = null;
-                    this.MemberSex = null;
-                    this.MemberAge = 0;*/
                 }
                 else { MessageBox.Show("입력 X"); }
             }
@@ -175,13 +170,6 @@ namespace member_management.ViewModels
             if (MemberInfoList.Count == 0 || SelectedMember == null) { return; }
             else
             {
-                /*
-                int SelectedIndex = MemberInfoList.IndexOf(SelectedMember);
-                SelectedMember.MemberName = this.MemberName;
-                SelectedMember.MemberID = this.MemberID;
-                SelectedMember.MemberSex = this.MemberSex;
-                SelectedMember.MemberAge = this.MemberAge;
-                */
                 AmendMemberInfoWindow modifyWindow = new AmendMemberInfoWindow(SelectedMember);
                 modifyWindow.ShowDialog();
             }
@@ -189,17 +177,6 @@ namespace member_management.ViewModels
 
         private async void SaveCmd()
         {
-            /*
-            using StreamWriter file = new(path);
-            foreach (MemberInfo member in MemberInfoList)
-            {
-                await file.WriteAsync(member.MemberName.ToString() + " ");
-                await file.WriteAsync(member.MemberID.ToString() + " ");
-                await file.WriteAsync(member.MemberSex.ToString() + " ");
-                await file.WriteAsync(member.MemberAge.ToString() + " ");
-                await file.WriteAsync("\n");
-            }
-            */
             JArray JsonMemberList = new JArray();
             foreach (MemberInfo member in MemberInfoList)
             {
