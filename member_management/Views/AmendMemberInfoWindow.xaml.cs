@@ -27,15 +27,26 @@ namespace member_management.Views
             _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;
             _vmAmend.OriginalInfo = member;
         }
-        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void InputFilterNum(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        private void AmendInfo_Click(object sender, RoutedEventArgs e)
+        private void InputFilterText(object sender, TextCompositionEventArgs e)
         {
-            TextBoxClear();
+            Regex regex = new Regex("[0-9]+"); // 숫자 입력 불가
+            e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TextBoxClear();
+            // this.Close();
+        }
+
+        /*private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }*/
     }
 }

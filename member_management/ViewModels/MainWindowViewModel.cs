@@ -19,8 +19,8 @@ namespace member_management.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        string path = "D:\\test\\memberlist.json";
-
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"memberlist.json");
+            
         private ObservableCollection<MemberInfo> _memberInfoList;
         public ObservableCollection<MemberInfo> MemberInfoList
         {
@@ -88,6 +88,12 @@ namespace member_management.ViewModels
             SelectedMember = null;
 
             ReadMemberList();
+
+
+            //if(!File.Exists(path))
+            //{
+            //    File.Create(path);
+            //}
         }
 
         private void ReadMemberList()
@@ -136,7 +142,11 @@ namespace member_management.ViewModels
         {
             try
             {
-                if (!(this.MemberName == null) && !(this.MemberID == null) && !(this.MemberSex == null) && !(this.MemberAge == 0))
+                if(MemberName == null) { MessageBox.Show("이름을 입력하세요."); }
+                else if(MemberID == null) { MessageBox.Show("ID를 입력하세요."); }
+                else if(MemberSex == null) { MessageBox.Show("성별을 입력하세요."); }
+                else if(MemberAge == 0) { MessageBox.Show("나이를 입력하세요."); }
+                else
                 {
                     MemberInfo infos = new MemberInfo();
                     infos.MemberName = this.MemberName;
@@ -146,7 +156,6 @@ namespace member_management.ViewModels
 
                     MemberInfoList.Add(infos);
                 }
-                else { MessageBox.Show("입력 X"); }
             }
             catch (Exception e)
             {

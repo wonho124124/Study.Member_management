@@ -20,20 +20,26 @@ namespace member_management.Views
             MemberSexTextBox.Text = null;
             MemberAgeTextBox.Text = "0";
         }
-        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void InputFilterNum(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^0-9]+"); // 숫자만 입력
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void InputFilterText(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[0-9]+"); // 숫자 입력 불가
             e.Handled = regex.IsMatch(e.Text);
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxClear();
+            // TextBoxClear();
         }
 
         private void AmendButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxClear();
+            // TextBoxClear();
         }
     }
 }

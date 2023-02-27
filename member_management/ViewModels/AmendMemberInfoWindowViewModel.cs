@@ -46,35 +46,33 @@ namespace member_management.ViewModels
 
         #endregion
 
-        public ICommand AmendInfoCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
 
         public AmendMemberInfoWindowViewModel()
         {
-            AmendInfoCommand = new DelegateCommand(AmendInfoCmd);
+            SaveCommand = new DelegateCommand(SaveCmd);
         }
 
-        private void AmendInfoCmd()
+        private void SaveCmd()
         {
             try
             {
-                if (!(AmendName == null) && !(AmendID == null) && !(AmendName == null) && !(AmendAge == 0))
+                if (AmendName == null) { MessageBox.Show("이름을 입력하세요."); }
+                else if (AmendID == null) { MessageBox.Show("ID를 입력하세요."); }
+                else if (AmendSex == null) { MessageBox.Show("성별을 입력하세요."); }
+                else if (AmendAge == 0) { MessageBox.Show("나이를 입력하세요."); }
+                else
                 {
                     OriginalInfo.MemberName = AmendName;
                     OriginalInfo.MemberID = AmendID;
                     OriginalInfo.MemberSex = AmendSex;
-                    OriginalInfo.MemberAge = AmendAge;
+                    OriginalInfo.MemberAge = Convert.ToInt16(AmendAge);
                 }
-                else { MessageBox.Show("입력 X"); }
             }
             catch (Exception e)
             {
                 // MessageBox.Show(e.Message);
             }
-        }
-
-        interface ICloseWindows
-        {
-            void Close();
         }
     }
 }
