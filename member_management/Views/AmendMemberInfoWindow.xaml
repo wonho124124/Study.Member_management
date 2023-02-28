@@ -20,10 +20,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1"  Margin="0, 10, 0, 0" DataContext="{Binding OriginalUserInfo}">
-            <!--<TextBlock Width="50" Text="{Binding MemberName}" Height="20" FontSize="8" HorizontalAlignment="Left" TextAlignment="Center" Margin="20, 0, 0, 0"  x:Name="MemberNameTextBlock"/>
+            <TextBlock Width="50" Text="{Binding MemberName}" Height="20" FontSize="8" HorizontalAlignment="Left" TextAlignment="Center" Margin="20, 0, 0, 0"  x:Name="MemberNameTextBlock"/>
             <TextBlock Text ="{Binding MemberID}" Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" TextAlignment="Center" Margin="90, 0, 0, 0"  x:Name="MemberIDTextBlock"/>
             <TextBlock Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" TextAlignment="Center" Margin="0, 0, 90, 0"  x:Name="MemberSexTextBlock"/>
-            <TextBlock Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" TextAlignment="Center" Margin="0, 0, 20, 0"  x:Name="MemberAgeTextBlock"/>-->
+            <TextBlock Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" TextAlignment="Center" Margin="0, 0, 20, 0"  x:Name="MemberAgeTextBlock"/>
         </Grid>
         <Grid Grid.Row="3" Margin="0, 10, 0, 0">
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="20, 0, 0, 0"

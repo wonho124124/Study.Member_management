@@ -4,79 +4,86 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding MemberManagementTitle}" Height="350" Width="525" >
+        Title="{Binding MemberManagementTitle}" Height="450" Width="700" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
             <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Width="300" Height="300">
+    <Grid Height="400" Width="450">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
         <Grid Grid.Row="1" Margin="0, 10, 0, 0">
-            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="20, 0, 0, 0"
+            <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Padding="5, 6, 0, 0" Text="이름"/>
+            <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberNameTextBox" Text="{Binding MemberName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberNameTextBox_GotFocus" LostFocus="MemberNameTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="이름" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
-                       x:Name="MemberNameHintTextBlock" HorizontalAlignment="Left" Margin="20, 0, 0, 0"/>
-            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="90, 0, 0, 0"
+            <TextBlock IsHitTestVisible="False" Text="이름" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberNameHintTextBlock" HorizontalAlignment="Left" Margin="55, 0, 0, 0"/>
+            <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="155, 0, 0, 0" Padding="5, 6, 0, 0" Text="ID"/>
+            <TextBox Width="100" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="190, 0, 0, 0"
                      x:Name="MemberIDTextBox" Text="{Binding MemberID}" KeyboardNavigation.TabIndex="2" IsTabStop="True" GotFocus="MemberIDTextBox_GotFocus" LostFocus="MemberIDTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="ID" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
-                       x:Name="MemberIDHintTextBlock" HorizontalAlignment="Left" Margin="90, 0, 0, 0"/>
-            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 90, 0"
+            <TextBlock IsHitTestVisible="False" Text="ID" Width="50" Height="20" FontSize="10" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberIDHintTextBlock" HorizontalAlignment="Left" Margin="190, 0, 0, 0"/>
+            
+        </Grid>
+        <Grid Grid.Row="2" Margin="0, 10, 0, 0">
+            <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Padding="5, 6, 0, 0" Text="성별"/>
+            <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberSexTextBox_GotFocus" LostFocus="MemberSexTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="성별" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
-                       x:Name="MemberSexHintTextBlock" HorizontalAlignment="Right" Margin="0, 0, 90, 0"/>
-            <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 20, 0"
+            <TextBlock IsHitTestVisible="False" Text="성별" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberSexHintTextBlock" HorizontalAlignment="Left" Margin="55, 0, 0, 0"/>
+            <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="155, 0, 0, 0" Padding="4, 6, 0, 0" Text="나이"/>
+            <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="190, 0, 0, 0"
                      x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength="3" GotFocus="MemberAgeTextBox_GotFocus" LostFocus="MemberAgeTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="나이" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
-                       x:Name="MemberAgeHintTextBlock" HorizontalAlignment="Right" Margin="0, 0, 20, 0"/>
+            <TextBlock IsHitTestVisible="False" Text="나이" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberAgeHintTextBlock" HorizontalAlignment="Left" Margin="190, 0, 0, 0"/>
         </Grid>
 
-        <Grid Grid.Row="3" Margin="0, 10, 0, 0">
-            <Button   x:Name="AddButton" Content="추가" Command="{Binding AddCommand}" HorizontalAlignment="Left"
-                    Width="50" Height="20" FontSize="8" Margin="20, 0, 0, 0" IsTabStop="False" Click="AddButton_Click"/>
-            <Button   x:Name="DeleteButton" Content="삭제" Command="{Binding DeleteCommand}" HorizontalAlignment="Left"
-                    Width="50" Height="20" FontSize="8" Margin="90, 0, 0, 0" IsTabStop="False"/>
-            <Button   x:Name="AmendButton" Content="수정" Command="{Binding AmendCommand}" HorizontalAlignment="Left"
-                    Width="50" Height="20" FontSize="8" Margin="160,0,0,0" IsTabStop="False" VerticalAlignment="Top"/>
-            <Button   x:Name="SaveButton" Content="저장" Command="{Binding SaveCommand}" HorizontalAlignment="Right"
-                    Width="50" Height="20" FontSize="8" Margin="0, 0, 20, 0" IsTabStop="False"/>        
+        <Grid Grid.Row="4" Margin="0, 10, 0, 0">
+            <Button   x:Name="AddButton" Content="추가" Command="{Binding AddCommand}" HorizontalAlignment="Center"
+                    Width="60" Height="20" FontSize="9" Margin="0, 0, 270, 0" IsTabStop="False" Click="AddButton_Click"/>
+            <Button   x:Name="DeleteButton" Content="삭제" Command="{Binding DeleteCommand}" HorizontalAlignment="Center"
+                    Width="60" Height="20" FontSize="9" Margin="0, 0, 90, 0" IsTabStop="False"/>
+            <Button   x:Name="AmendButton" Content="수정" Command="{Binding AmendCommand}" HorizontalAlignment="Center"
+                    Width="60" Height="20" FontSize="9" Margin="90, 0, 0, 0" IsTabStop="False" VerticalAlignment="Top"/>
+            <Button   x:Name="SaveButton" Content="저장" Command="{Binding SaveCommand}" HorizontalAlignment="Center"
+                    Width="60" Height="20" FontSize="9" Margin="270, 0, 0, 0" IsTabStop="False"/>        
         </Grid>
 
-        <Grid Grid.Row="5" Margin="0, 10, 0, 0">
-            <ListView x:Name="MemberListView" ItemsSource="{Binding MemberInfoList}" SelectedItem="{Binding SelectedMember}" Width="260" HorizontalAlignment="Center" BorderThickness="1" Height="150" FontSize="8">
+        <Grid Grid.Row="6" Margin="0, 0, 0, 0">
+            <ListView x:Name="MemberListView" ItemsSource="{Binding MemberInfoList}" SelectedItem="{Binding SelectedMember}" Width="330" Height="200" HorizontalAlignment="Center" BorderThickness="1" FontSize="10">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="이름" Width="60">
+                        <GridViewColumn Header="이름" Width="80">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberName}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="회원 ID" Width="100">
+                        <GridViewColumn Header="회원 ID" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberID}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="성별" Width="50">
+                        <GridViewColumn Header="성별" Width="65">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberSex}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="나이" Width="50">
+                        <GridViewColumn Header="나이" Width="65">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberAge}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>

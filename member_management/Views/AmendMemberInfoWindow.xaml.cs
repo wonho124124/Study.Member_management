@@ -18,7 +18,7 @@ namespace member_management.Views
             MemberNameTextBox.Text = null;
             MemberIDTextBox.Text = null;
             MemberSexTextBox.Text = null;
-            MemberAgeTextBox.Text = "0";
+            MemberAgeTextBox.Text = null;
         }
 
         public AmendMemberInfoWindow(MemberInfo member)
