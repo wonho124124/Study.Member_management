@@ -54,7 +54,7 @@ namespace member_management.Views
             this.Close();
         }*/
 
-        private void LoginIDTextBox_GotFocus(object sender, RoutedEventArgs e)
+        /*private void LoginIDTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
         }
@@ -69,6 +69,6 @@ namespace member_management.Views
             {
                 LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
             }
-        }
+        }*/
     }
 }

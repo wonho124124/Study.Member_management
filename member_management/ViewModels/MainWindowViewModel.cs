@@ -20,6 +20,13 @@ namespace member_management.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"memberlist.json");
+
+        private string _memberManagementTitle = "회원 관리";
+        public string MemberManagementTitle
+        {
+            get { return _memberManagementTitle; }
+            set { _memberManagementTitle = value; }
+        }
             
         private ObservableCollection<MemberInfo> _memberInfoList;
         public ObservableCollection<MemberInfo> MemberInfoList
@@ -58,8 +65,8 @@ namespace member_management.ViewModels
             set { _memberSex = value; }
         }
 
-        private int _memberAge;
-        public int MemberAge
+        private string _memberAge;
+        public string MemberAge
         {
             get { return _memberAge; }
             set { _memberAge = value; }
@@ -109,7 +116,7 @@ namespace member_management.ViewModels
                         member.MemberName = jsonMember["이름"].ToString();
                         member.MemberID = jsonMember["ID"].ToString();
                         member.MemberSex = jsonMember["성별"].ToString();
-                        member.MemberAge = int.Parse(jsonMember["나이"].ToString());
+                        member.MemberAge = jsonMember["나이"].ToString();
                         MemberInfoList.Add(member);
                     }
                 }
@@ -129,7 +136,7 @@ namespace member_management.ViewModels
                     new JProperty("이름", member.MemberName),
                     new JProperty("ID", member.MemberID),
                     new JProperty("성별", member.MemberSex),
-                    new JProperty("나이", member.MemberAge)
+                    new JProperty("나이", Convert.ToInt16(member.MemberAge))
                 );
                 JsonMemberList.Add(m);
             }
@@ -143,14 +150,14 @@ namespace member_management.ViewModels
                 if(MemberName == null) { MessageBox.Show("이름을 입력하세요."); }
                 else if(MemberID == null) { MessageBox.Show("ID를 입력하세요."); }
                 else if(MemberSex == null) { MessageBox.Show("성별을 입력하세요."); }
-                else if(MemberAge == 0) { MessageBox.Show("나이를 입력하세요."); }
+                else if(MemberAge == null) { MessageBox.Show("나이를 입력하세요."); }
                 else
                 {
                     MemberInfo infos = new MemberInfo();
                     infos.MemberName = this.MemberName;
                     infos.MemberID = this.MemberID;
                     infos.MemberSex = this.MemberSex;
-                    infos.MemberAge = Convert.ToInt16(this.MemberAge);
+                    infos.MemberAge = this.MemberAge;
 
                     MemberInfoList.Add(infos);
                 }
@@ -191,7 +198,7 @@ namespace member_management.ViewModels
                     new JProperty("이름", member.MemberName),
                     new JProperty("ID", member.MemberID),
                     new JProperty("성별", member.MemberSex),
-                    new JProperty("나이", member.MemberAge)
+                    new JProperty("나이", Convert.ToInt16(member.MemberAge))
                 );
                 JsonMemberList.Add(m);
             }

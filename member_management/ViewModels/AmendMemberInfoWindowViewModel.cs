@@ -12,6 +12,13 @@ namespace member_management.ViewModels
 {
     public class AmendMemberInfoWindowViewModel : BindableBase
     {
+        private string _amendMemberInfoTitle = "회원 정보 수정";
+        public string AmendMemberInfotTitle
+        {
+            get { return _amendMemberInfoTitle; }
+            set { _amendMemberInfoTitle = value; }
+        }
+
         #region Bind
         private string _amendName;
         public string AmendName
@@ -31,8 +38,8 @@ namespace member_management.ViewModels
             get { return _amendSex; }
             set { _amendSex = value; }
         }
-        private int _amendAge;
-        public int AmendAge
+        private string _amendAge;
+        public string AmendAge
         {
             get { return _amendAge; }
             set { _amendAge = value; }
@@ -61,13 +68,13 @@ namespace member_management.ViewModels
                 if (AmendName == null) { MessageBox.Show("이름을 입력하세요."); }
                 else if (AmendID == null) { MessageBox.Show("ID를 입력하세요."); }
                 else if (AmendSex == null) { MessageBox.Show("성별을 입력하세요."); }
-                else if (AmendAge == 0) { MessageBox.Show("나이를 입력하세요."); }
+                else if (AmendAge == null) { MessageBox.Show("나이를 입력하세요."); }
                 else
                 {
                     OriginalInfo.MemberName = AmendName;
                     OriginalInfo.MemberID = AmendID;
                     OriginalInfo.MemberSex = AmendSex;
-                    OriginalInfo.MemberAge = Convert.ToInt16(AmendAge);
+                    OriginalInfo.MemberAge = AmendAge;
                     isSaveSuccess = true;
                 }
                 return isSaveSuccess;

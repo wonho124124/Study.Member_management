@@ -30,8 +30,8 @@ namespace member_management.Models
             set { SetProperty(ref _memberSex, value); }
         }
 
-        private int _memberAge;
-        public int MemberAge
+        private string _memberAge;
+        public string MemberAge
         {
             get { return _memberAge; }
             set { SetProperty(ref _memberAge, value); }
