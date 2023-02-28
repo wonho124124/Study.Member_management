@@ -29,7 +29,7 @@
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 90, 0"
                      x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText"/>
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 20, 0"
-                     x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum"/>
+                     x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength="3"/>
         </Grid>
 
         <Grid Grid.Row="3" Margin="0, 10, 0, 0">

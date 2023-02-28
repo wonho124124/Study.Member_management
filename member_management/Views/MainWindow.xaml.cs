@@ -34,7 +34,7 @@ namespace member_management.Views
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // TextBoxClear();
+            TextBoxClear();
         }
 
         private void AmendButton_Click(object sender, RoutedEventArgs e)
