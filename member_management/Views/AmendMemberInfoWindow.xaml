@@ -20,6 +20,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -27,13 +28,16 @@
             <TextBlock Width="100" Height="25" FontSize="11" HorizontalAlignment="Left" TextAlignment="Left" Margin="25, 0, 0, 0" Padding="1, 5, 0, 0"
                        Text="수정할 회원 정보"/>
         </Grid>
-        <Grid Grid.Row="1"  Margin="0, 10, 0, 0" DataContext="{Binding OriginalInfo}" Grid.ColumnSpan="2">
-            <TextBlock Width="50" Text ="{Binding MemberName}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Center" Margin="25, 0, 0, 0"  x:Name="MemberNameTextBlock"/>
-            <TextBlock Width="50" Text ="{Binding MemberID}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Center" Margin="100, 0, 0, 0"  x:Name="MemberIDTextBlock"/>
-            <TextBlock Width="50" Text ="{Binding MemberSex}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Center" Margin="175, 0, 0, 0"  x:Name="MemberSexTextBlock"/>
-            <TextBlock Width="50"  Text ="{Binding MemberAge}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Center" Margin="250, 0, 0, 0"  x:Name="MemberAgeTextBlock"/>
+        <Grid Grid.Row="1"  Margin="0, 10, 0, 0" DataContext="{Binding OriginalInfo}">
+            <TextBlock Width="100" Text ="{Binding MemberName}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Margin="25, 0, 0, 0"  x:Name="MemberNameTextBlock"/>
+            <TextBlock Width="100" Text ="{Binding MemberID}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Margin="160, 0, 0, 0"  x:Name="MemberIDTextBlock"/>
+            
         </Grid>
-        <Grid Grid.Row="3" Margin="0, 10, 0, 0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Margin="0, 0, 0, 0" DataContext="{Binding OriginalInfo}">
+            <TextBlock Width="100" Text ="{Binding MemberSex}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Margin="25, 0, 0, 0"  x:Name="MemberSexTextBlock"/>
+            <TextBlock Width="100" Text ="{Binding MemberAge}" Height="25" FontSize="10" HorizontalAlignment="Left" TextAlignment="Left" Margin="160, 0, 0, 0"  x:Name="MemberAgeTextBlock"/>
+        </Grid>
+        <Grid Grid.Row="4" Margin="0, 10, 0, 0" Grid.ColumnSpan="2">
             <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Padding="5, 6, 0, 0" Text="이름"/>
             <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberNameTextBox" Text="{Binding AmendName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" PreviewTextInput="InputFilterText"/>
@@ -42,7 +46,7 @@
                      x:Name="MemberIDTextBox" Text="{Binding AmendID}" KeyboardNavigation.TabIndex="2" IsTabStop="True"/>
 
         </Grid>
-        <Grid Grid.Row="4" Margin="0, 10, 0, 0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="5" Margin="0, 10, 0, 0" Grid.ColumnSpan="2">
             <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Padding="5, 6, 0, 0" Text="성별"/>
             <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberSexTextBox" Text="{Binding AmendSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText"/>
@@ -51,7 +55,7 @@
                      x:Name="MemberAgeTextBox" Text="{Binding AmendAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength = "3"/>
 
         </Grid>
-        <Grid Grid.Row="6" Margin="0,10,0,0" Height="20" VerticalAlignment="Top">
+        <Grid Grid.Row="7" Margin="0,10,0,0" Height="20" VerticalAlignment="Top">
             <Button   x:Name="AmendInfo" Content="회원정보 수정" Click="SaveBtn_Click" HorizontalAlignment="Left"
                     Width="80" Height="20" FontSize="9" Margin="55,0,0,0" IsTabStop="False" VerticalAlignment="Top"/>
             <Button   x:Name="AmendCancle" Content="취소" HorizontalAlignment="Left"
