@@ -13,19 +13,28 @@ namespace member_management.Views
     {
         MemberInfo SelectedMember = new MemberInfo();
         AmendMemberInfoWindowViewModel _vmAmend = null;
-        private void TextBoxClear()
-        {
-            MemberNameTextBox.Text = null;
-            MemberIDTextBox.Text = null;
-            MemberSexTextBox.Text = null;
-            MemberAgeTextBox.Text = null;
-        }
 
         public AmendMemberInfoWindow(MemberInfo member)
         {
             InitializeComponent();
             _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;
+            //SelectedMember = member;
             _vmAmend.OriginalInfo = member;
+            
+
+            OriginalInfoView(member);
+        }
+        public void OriginalInfoView(MemberInfo member)
+        {
+            MemberNameTextBlock.Text = "이름 : " + member.MemberName;
+            MemberIDTextBlock.Text = "ID : " + member.MemberID;
+            MemberSexTextBlock.Text = "성별 : " + member.MemberSex;
+            MemberAgeTextBlock.Text = "나이 : " + member.MemberAge;
+
+            MemberNameTextBox.Text = member.MemberName;
+            MemberIDTextBox.Text = member.MemberID;
+            MemberSexTextBox.Text = member.MemberSex;
+            MemberAgeTextBox.Text = member.MemberAge;
         }
         private void InputFilterNum(object sender, TextCompositionEventArgs e)
         {
@@ -43,32 +52,7 @@ namespace member_management.Views
             if(_vmAmend.SaveCmd())
             {
                 this.Close();
-            };
-            
-            // TextBoxClear();
-            // this.Close();
+            };   
         }
-
-        /*private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }*/
-
-        /*private void LoginIDTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
-        }
-
-        private void LoginIDTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(MemberNameTextBox.Text))
-            {
-                LoginIDHintTextBlock.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
-            }
-        }*/
     }
 }

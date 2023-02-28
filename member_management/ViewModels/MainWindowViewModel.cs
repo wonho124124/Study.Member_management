@@ -12,9 +12,6 @@ using static member_management.Models.MemberInfo;
 using member_management.Views;
 using member_management.Models;
 
-
-
-
 namespace member_management.ViewModels
 {
     public class MainWindowViewModel : BindableBase
@@ -92,7 +89,6 @@ namespace member_management.ViewModels
             CloseCommand = new DelegateCommand(CloseCmd);
 
             MemberInfoList = new ObservableCollection<MemberInfo>();
-            SelectedMember = null;
 
             ReadMemberList();
             //if(!File.Exists(path))

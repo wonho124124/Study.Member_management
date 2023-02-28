@@ -4,9 +4,9 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding MemberManagementTitle}" Height="450" Width="700" >
+        Title="{Binding MemberManagementTitle}" Height="450" Width="600" >
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Closed">
+        <i:EventTrigger EventName="Closed"> <!--EventName="Closed" or "Closing"     window close event name-->
             <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
