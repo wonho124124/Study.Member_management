@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using System.Windows;
 using member_management.Models;
+using System.ComponentModel;
 
 namespace member_management.ViewModels
 {
@@ -41,20 +42,20 @@ namespace member_management.ViewModels
         public MemberInfo OriginalInfo
         {
             get { return _originalInfo; }
-            set { SetProperty(ref _originalInfo, value); }
+            set { _originalInfo = value; }
         }
-
         #endregion
 
-        public ICommand SaveCommand { get; set; }
+        //public ICommand SaveCommand { get; set; }
 
         public AmendMemberInfoWindowViewModel()
         {
-            SaveCommand = new DelegateCommand(SaveCmd);
+            //SaveCommand = new DelegateCommand(SaveCmd);
         }
 
-        private void SaveCmd()
+        public bool SaveCmd()
         {
+            bool isSaveSuccess = false;
             try
             {
                 if (AmendName == null) { MessageBox.Show("이름을 입력하세요."); }
@@ -67,11 +68,14 @@ namespace member_management.ViewModels
                     OriginalInfo.MemberID = AmendID;
                     OriginalInfo.MemberSex = AmendSex;
                     OriginalInfo.MemberAge = Convert.ToInt16(AmendAge);
+                    isSaveSuccess = true;
                 }
+                return isSaveSuccess;
             }
             catch (Exception e)
             {
                 // MessageBox.Show(e.Message);
+                return false;
             }
         }
     }

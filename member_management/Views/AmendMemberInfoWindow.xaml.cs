@@ -40,6 +40,11 @@ namespace member_management.Views
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(_vmAmend.SaveCmd())
+            {
+                this.Close();
+            };
+            
             // TextBoxClear();
             // this.Close();
         }

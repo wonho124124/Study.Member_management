@@ -88,8 +88,6 @@ namespace member_management.ViewModels
             SelectedMember = null;
 
             ReadMemberList();
-
-
             //if(!File.Exists(path))
             //{
             //    File.Create(path);
