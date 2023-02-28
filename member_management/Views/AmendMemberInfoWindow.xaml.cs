@@ -53,5 +53,22 @@ namespace member_management.Views
         {
             this.Close();
         }*/
+
+        private void LoginIDTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void LoginIDTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(MemberNameTextBox.Text))
+            {
+                LoginIDHintTextBlock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LoginIDHintTextBlock.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

@@ -23,13 +23,21 @@
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
         <Grid Grid.Row="1" Margin="0, 10, 0, 0">
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="20, 0, 0, 0"
-                     x:Name="MemberNameTextBox" Text="{Binding MemberName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" PreviewTextInput="InputFilterText"/>
+                     x:Name="MemberNameTextBox" Text="{Binding MemberName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberNameTextBox_GotFocus" LostFocus="MemberNameTextBox_LostFocus"/>
+            <TextBlock IsHitTestVisible="False" Text="이름" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberNameHintTextBlock" HorizontalAlignment="Left" Margin="20, 0, 0, 0"/>
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Left" Margin="90, 0, 0, 0"
-                     x:Name="MemberIDTextBox" Text="{Binding MemberID}" KeyboardNavigation.TabIndex="2" IsTabStop="True"/>
+                     x:Name="MemberIDTextBox" Text="{Binding MemberID}" KeyboardNavigation.TabIndex="2" IsTabStop="True" GotFocus="MemberIDTextBox_GotFocus" LostFocus="MemberIDTextBox_LostFocus"/>
+            <TextBlock IsHitTestVisible="False" Text="ID" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberIDHintTextBlock" HorizontalAlignment="Left" Margin="90, 0, 0, 0"/>
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 90, 0"
-                     x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText"/>
+                     x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberSexTextBox_GotFocus" LostFocus="MemberSexTextBox_LostFocus"/>
+            <TextBlock IsHitTestVisible="False" Text="성별" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberSexHintTextBlock" HorizontalAlignment="Right" Margin="0, 0, 90, 0"/>
             <TextBox Width="50" Height="20" FontSize="8" HorizontalAlignment="Right" Margin="0, 0, 20, 0"
-                     x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength="3"/>
+                     x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength="3" GotFocus="MemberAgeTextBox_GotFocus" LostFocus="MemberAgeTextBox_LostFocus"/>
+            <TextBlock IsHitTestVisible="False" Text="나이" Width="50" Height="20" FontSize="8" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+                       x:Name="MemberAgeHintTextBlock" HorizontalAlignment="Right" Margin="0, 0, 20, 0"/>
         </Grid>
 
         <Grid Grid.Row="3" Margin="0, 10, 0, 0">
@@ -38,9 +46,9 @@
             <Button   x:Name="DeleteButton" Content="삭제" Command="{Binding DeleteCommand}" HorizontalAlignment="Left"
                     Width="50" Height="20" FontSize="8" Margin="90, 0, 0, 0" IsTabStop="False"/>
             <Button   x:Name="AmendButton" Content="수정" Command="{Binding AmendCommand}" HorizontalAlignment="Left"
-                    Width="50" Height="20" FontSize="8" Margin="160,0,0,0" IsTabStop="False" VerticalAlignment="Top" Click="AmendButton_Click"/>
+                    Width="50" Height="20" FontSize="8" Margin="160,0,0,0" IsTabStop="False" VerticalAlignment="Top"/>
             <Button   x:Name="SaveButton" Content="저장" Command="{Binding SaveCommand}" HorizontalAlignment="Right"
-                    Width="50" Height="20" FontSize="8" Margin="0, 0, 20, 0" IsTabStop="False"/>
+                    Width="50" Height="20" FontSize="8" Margin="0, 0, 20, 0" IsTabStop="False"/>        
         </Grid>
 
         <Grid Grid.Row="5" Margin="0, 10, 0, 0">
