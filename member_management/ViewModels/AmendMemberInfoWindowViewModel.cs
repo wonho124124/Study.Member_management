@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows;
 using member_management.Models;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace member_management.ViewModels
 {
@@ -31,6 +32,12 @@ namespace member_management.ViewModels
         {
             get { return _amendID; }
             set { _amendID = value; }
+        }
+        private ObservableCollection<string> _amendSexList;
+        public ObservableCollection<string> AmendSexList
+        {
+            get { return _amendSexList; }
+            set { _amendSexList = value; }
         }
         private string _amendSex;
         public string AmendSex
@@ -58,6 +65,11 @@ namespace member_management.ViewModels
         public AmendMemberInfoWindowViewModel()
         {
             //SaveCommand = new DelegateCommand(SaveCmd);
+            AmendSexList = new ObservableCollection<string>()
+            {
+                new string("남자"),
+                new string("여자")
+            };
         }
 
         public bool SaveCmd()

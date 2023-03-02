@@ -20,7 +20,7 @@ namespace member_management.Views
         {
             MemberNameTextBox.Text = null;
             MemberIDTextBox.Text = null;
-            // MemberSexTextBox.Text = null;
+            MemberSexComboBox.SelectedIndex = -1;
             MemberAgeTextBox.Text = null;
         }
         private void InputFilterNum(object sender, TextCompositionEventArgs e)

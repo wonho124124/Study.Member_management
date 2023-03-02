@@ -39,7 +39,7 @@
             <!--<TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberSexTextBox" Text="{Binding MemberSex}" KeyboardNavigation.TabIndex="3" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberSexTextBox_GotFocus" LostFocus="MemberSexTextBox_LostFocus"/>-->
             <ComboBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
-                      ItemsSource="{Binding MemberSexList}" SelectedItem="{Binding MemberSex}"/>
+                      x:Name="MemberSexComboBox" ItemsSource="{Binding MemberSexList}" SelectedItem="{Binding MemberSex}"/>
             <!--<TextBlock IsHitTestVisible="False" Text="성별" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
                        x:Name="MemberSexHintTextBlock" HorizontalAlignment="Left" Margin="55, 0, 0, 0"/>-->
             <TextBlock Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="155, 0, 0, 0" Padding="4, 6, 0, 0" Text="나이"/>

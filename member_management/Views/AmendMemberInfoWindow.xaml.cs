@@ -31,10 +31,10 @@ namespace member_management.Views
             MemberSexTextBlock.Text = "성별 : " + member.MemberSex;
             MemberAgeTextBlock.Text = "나이 : " + member.MemberAge;
 
-            MemberNameTextBox.Text = member.MemberName;
+            /*MemberNameTextBox.Text = member.MemberName;
             MemberIDTextBox.Text = member.MemberID;
-            MemberSexTextBox.Text = member.MemberSex;
-            MemberAgeTextBox.Text = member.MemberAge;
+            MemberSexComboBox.Items.Clear();
+            MemberAgeTextBox.Text = member.MemberAge;*/
         }
         private void InputFilterNum(object sender, TextCompositionEventArgs e)
         {
