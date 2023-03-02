@@ -17,7 +17,7 @@ namespace member_management.Views
         public AmendMemberInfoWindow(MemberInfo member)
         {
             InitializeComponent();
-            // _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;  //datacontext 없어도 view에서 viewmodel 접근가능
+            _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;  //datacontext 없어도 view에서 viewmodel 접근가능
             // SelectedMember = member;
             _vmAmend.OriginalInfo = member;
             

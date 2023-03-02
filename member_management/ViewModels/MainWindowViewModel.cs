@@ -55,6 +55,13 @@ namespace member_management.ViewModels
             set { _memberID = value; }
         }
 
+        private ObservableCollection<string> _memberSexList;
+        public ObservableCollection<string> MemberSexList
+        {
+            get { return _memberSexList; }
+            set { _memberSexList = value; }
+        }
+
         private string _memberSex;
         public string MemberSex
         {
@@ -89,6 +96,11 @@ namespace member_management.ViewModels
             CloseCommand = new DelegateCommand(CloseCmd);
 
             MemberInfoList = new ObservableCollection<MemberInfo>();
+            MemberSexList = new ObservableCollection<string>()
+            {
+                new string("남자"),
+                new string("여자")
+            };
 
             ReadMemberList();
             //if(!File.Exists(path))

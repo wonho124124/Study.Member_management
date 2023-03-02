@@ -20,7 +20,7 @@ namespace member_management.Views
         {
             MemberNameTextBox.Text = null;
             MemberIDTextBox.Text = null;
-            MemberSexTextBox.Text = null;
+            // MemberSexTextBox.Text = null;
             MemberAgeTextBox.Text = null;
         }
         private void InputFilterNum(object sender, TextCompositionEventArgs e)
@@ -79,7 +79,7 @@ namespace member_management.Views
             }
         }
 
-        private void MemberSexTextBox_GotFocus(object sender, RoutedEventArgs e)
+        /*private void MemberSexTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             MemberSexHintTextBlock.Visibility = Visibility.Collapsed;
         }
@@ -94,7 +94,7 @@ namespace member_management.Views
             {
                 MemberSexHintTextBlock.Visibility = Visibility.Collapsed;
             }
-        }
+        }*/
 
         private void MemberAgeTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
