@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using member_management.ViewModels;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,9 +10,11 @@ namespace member_management.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel viewModel = null;
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = this.DataContext as MainWindowViewModel;
         }
         private void TextBoxClear()
         {
@@ -34,7 +37,10 @@ namespace member_management.Views
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxClear();
+            if (viewModel.AddCmd())
+            {
+                TextBoxClear();
+            }
         }
 
         #region TextBox_Focus

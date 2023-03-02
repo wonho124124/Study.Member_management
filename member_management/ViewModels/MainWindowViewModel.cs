@@ -71,7 +71,7 @@ namespace member_management.ViewModels
         #endregion
 
         #region Command
-        public ICommand AddCommand { get; set; }
+        // public ICommand AddCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand AmendCommand { get; set; }
         public ICommand SaveCommand { get; set; }
@@ -82,7 +82,7 @@ namespace member_management.ViewModels
 
         public MainWindowViewModel()
         {
-            AddCommand = new DelegateCommand(AddCmd);
+            // AddCommand = new DelegateCommand(AddCmd);
             DeleteCommand = new DelegateCommand(DeleteCmd);
             AmendCommand = new DelegateCommand(AmendCmd);
             SaveCommand = new DelegateCommand(SaveCmd);
@@ -139,8 +139,9 @@ namespace member_management.ViewModels
             File.WriteAllText(path, JsonMemberList.ToString());
         }
 
-        private void AddCmd()
+        public bool AddCmd()
         {
+            bool IsAddSuccess = false;
             try
             {
                 if(MemberName == null) { MessageBox.Show("이름을 입력하세요."); }
@@ -157,11 +158,14 @@ namespace member_management.ViewModels
 
                     MemberInfoList.Add(infos);
                 }
+                IsAddSuccess = true;
             }
             catch (Exception e)
             {
                 // MessageBox.Show(e.Message);
+                IsAddSuccess = false;
             }
+            return IsAddSuccess;
         }
 
         private void DeleteCmd()
