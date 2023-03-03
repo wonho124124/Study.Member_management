@@ -26,15 +26,20 @@ namespace member_management.Views
         }
         public void OriginalInfoView(MemberInfo member)
         {
-            MemberNameTextBlock.Text = "이름 : " + member.MemberName;
+           /* MemberNameTextBlock.Text = "이름 : " + member.MemberName;
             MemberIDTextBlock.Text = "ID : " + member.MemberID;
             MemberSexTextBlock.Text = "성별 : " + member.MemberSex;
-            MemberAgeTextBlock.Text = "나이 : " + member.MemberAge;
+            MemberAgeTextBlock.Text = "나이 : " + member.MemberAge;*/
 
-            /*MemberNameTextBox.Text = member.MemberName;
+            _vmAmend.AmendName = member.MemberName;
+            _vmAmend.AmendID = member.MemberID;
+            _vmAmend.AmendSex = member.MemberSex;
+            _vmAmend.AmendAge = member.MemberAge;
+
+            MemberNameTextBox.Text = member.MemberName;
             MemberIDTextBox.Text = member.MemberID;
-            MemberSexComboBox.Items.Clear();
-            MemberAgeTextBox.Text = member.MemberAge;*/
+            MemberSexComboBox.SelectedIndex = _vmAmend.AmendSexList.IndexOf(member.MemberSex);
+            MemberAgeTextBox.Text = member.MemberAge;
         }
         private void InputFilterNum(object sender, TextCompositionEventArgs e)
         {
