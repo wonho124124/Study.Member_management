@@ -18,7 +18,7 @@ namespace member_management.ViewModels
     {
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"memberlist.json");
 
-        private string _memberManagementTitle = "회원";
+        private string _memberManagementTitle = "회원 관리";
         public string MemberManagementTitle
         {
             get { return _memberManagementTitle; }
