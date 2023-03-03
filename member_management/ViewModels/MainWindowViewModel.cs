@@ -11,6 +11,8 @@ using Newtonsoft.Json.Linq;
 using static member_management.Models.MemberInfo;
 using member_management.Views;
 using member_management.Models;
+using Prism.Events;
+using member_management.Events;
 
 namespace member_management.ViewModels
 {
@@ -18,6 +20,7 @@ namespace member_management.ViewModels
     {
         string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"memberlist.json");
 
+        #region Variables
         private string _memberManagementTitle = "회원 관리";
         public string MemberManagementTitle
         {
@@ -39,6 +42,8 @@ namespace member_management.ViewModels
             set { SetProperty(ref _selectedMember, value); }
         }
 
+        private readonly IEventAggregator _eventAggregator;
+        #endregion
 
         #region Bind
         private string _memberName;
@@ -87,28 +92,35 @@ namespace member_management.ViewModels
         #endregion
 
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
+
             // AddCommand = new DelegateCommand(AddCmd);
             DeleteCommand = new DelegateCommand(DeleteCmd);
             AmendCommand = new DelegateCommand(AmendCmd);
             SaveCommand = new DelegateCommand(SaveCmd);
-            CloseCommand = new DelegateCommand(CloseCmd);
+            CloseCommand = new DelegateCommand(CloseCmd); // shut down
+
+            _eventAggregator.GetEvent<AmendSuccessEvent>().Subscribe(AmendMemberInfoEvent, ThreadOption.UIThread, false, null);
 
             MemberInfoList = new ObservableCollection<MemberInfo>();
+            MemberSexListInit();
+            ReadMemberList();
+/*            if(!File.Exists(path))
+            {
+                File.Create(path);
+            }*/
+        }
+
+        private void MemberSexListInit()
+        {
             MemberSexList = new ObservableCollection<string>()
             {
                 new string("남자"),
                 new string("여자")
             };
-
-            ReadMemberList();
-            //if(!File.Exists(path))
-            //{
-            //    File.Create(path);
-            //}
         }
-
         private void ReadMemberList()
         {
             try
@@ -135,6 +147,19 @@ namespace member_management.ViewModels
             }
         }
 
+        private void AmendMemberInfoEvent(AmendSuccessEventHandler amendSuccessEventHandler)
+        {
+            ChangeInfo(amendSuccessEventHandler.AmendInfo);
+        }
+        private void ChangeInfo(MemberInfo AmendInfo)
+        {
+            SelectedMember.MemberName = AmendInfo.MemberName;
+            SelectedMember.MemberID = AmendInfo.MemberID;
+            SelectedMember.MemberSex = AmendInfo.MemberSex;
+            SelectedMember.MemberAge = AmendInfo.MemberAge;
+        }
+
+        #region Cmd
         private void CloseCmd()
         {
             JArray JsonMemberList = new JArray();
@@ -156,10 +181,10 @@ namespace member_management.ViewModels
             bool IsAddSuccess = false;
             try
             {
-                if(MemberName == null) { MessageBox.Show("이름을 입력하세요."); }
-                else if(MemberID == null) { MessageBox.Show("ID를 입력하세요."); }
-                else if(MemberSex == null) { MessageBox.Show("성별을 입력하세요."); }
-                else if(MemberAge == null) { MessageBox.Show("나이를 입력하세요."); }
+                if(String.IsNullOrEmpty(MemberName)) { MessageBox.Show("이름을 입력하세요."); }
+                else if(String.IsNullOrEmpty(MemberID)) { MessageBox.Show("ID를 입력하세요."); }
+                else if(String.IsNullOrEmpty(MemberSex)) { MessageBox.Show("성별을 입력하세요."); }
+                else if(String.IsNullOrEmpty(MemberAge)) { MessageBox.Show("나이를 입력하세요."); }
                 else
                 {
                     MemberInfo infos = new MemberInfo();
@@ -169,8 +194,8 @@ namespace member_management.ViewModels
                     infos.MemberAge = this.MemberAge;
 
                     MemberInfoList.Add(infos);
+                    IsAddSuccess = true;
                 }
-                IsAddSuccess = true;
             }
             catch (Exception e)
             {
@@ -199,8 +224,10 @@ namespace member_management.ViewModels
                 AmendMemberInfoWindow modifyWindow = new AmendMemberInfoWindow(SelectedMember);
                 modifyWindow.ShowDialog();
             }
+            
         }
 
+        
         private async void SaveCmd()
         {
             JArray JsonMemberList = new JArray();
@@ -218,5 +245,6 @@ namespace member_management.ViewModels
             // File.WriteAllText(path, stringMemberList);
             File.WriteAllText(path, JsonMemberList.ToString());
         }
+        #endregion
     }
 }

@@ -25,12 +25,12 @@
             <TextBlock FontWeight="Bold" Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Padding="5, 6, 0, 0" Text="이름"/>
             <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="55, 0, 0, 0"
                      x:Name="MemberNameTextBox" Text="{Binding MemberName}" KeyboardNavigation.TabIndex="1" IsTabStop="True" PreviewTextInput="InputFilterText" GotFocus="MemberNameTextBox_GotFocus" LostFocus="MemberNameTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="이름" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
+            <TextBlock IsHitTestVisible="False" Text="이름" Width="70" Height="25" FontSize="10" Padding="5, 5, 0, 0" Foreground="#AAAAAA"
                        x:Name="MemberNameHintTextBlock" HorizontalAlignment="Left" Margin="55, 0, 0, 0"/>
             <TextBlock FontWeight="Bold" Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="155, 0, 0, 0" Padding="5, 6, 0, 0" Text="ID"/>
             <TextBox Width="100" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="190, 0, 0, 0"
                      x:Name="MemberIDTextBox" Text="{Binding MemberID}" KeyboardNavigation.TabIndex="2" IsTabStop="True" GotFocus="MemberIDTextBox_GotFocus" LostFocus="MemberIDTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="ID" Width="70" Height="20" FontSize="10" Padding="5, 4, 0, 0" Foreground="#AAAAAA"
+            <TextBlock IsHitTestVisible="False" Text="ID" Width="70" Height="25" FontSize="10" Padding="6, 5, 0, 0" Foreground="#AAAAAA"
                        x:Name="MemberIDHintTextBlock" HorizontalAlignment="Left" Margin="190, 0, 0, 0"/>
             
         </Grid>
@@ -45,7 +45,7 @@
             <TextBlock FontWeight="Bold" Width="30" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="155, 0, 0, 0" Padding="4, 6, 0, 0" Text="나이"/>
             <TextBox Width="70" Height="25" FontSize="10" HorizontalAlignment="Left" Margin="190, 0, 0, 0"
                      x:Name="MemberAgeTextBox" Text="{Binding MemberAge}" KeyboardNavigation.TabIndex="4" IsTabStop="True" PreviewTextInput="InputFilterNum" MaxLength="3" GotFocus="MemberAgeTextBox_GotFocus" LostFocus="MemberAgeTextBox_LostFocus"/>
-            <TextBlock IsHitTestVisible="False" Text="나이" Width="70" Height="25" FontSize="10" Padding="5, 6, 0, 0" Foreground="#AAAAAA"
+            <TextBlock IsHitTestVisible="False" Text="나이" Width="70" Height="25" FontSize="10" Padding="5, 5, 0, 0" Foreground="#AAAAAA"
                        x:Name="MemberAgeHintTextBlock" HorizontalAlignment="Left" Margin="190, 0, 0, 0"/>
         </Grid>
 

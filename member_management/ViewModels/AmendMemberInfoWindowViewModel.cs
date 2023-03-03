@@ -8,17 +8,36 @@ using System.Windows;
 using member_management.Models;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using Prism.Events;
+using member_management.Events;
 
 namespace member_management.ViewModels
 {
     public class AmendMemberInfoWindowViewModel : BindableBase
     {
+        #region Variables
         private string _amendMemberInfoTitle = "회원 정보 수정";
         public string AmendMemberInfotTitle
         {
             get { return _amendMemberInfoTitle; }
             set { _amendMemberInfoTitle = value; }
         }
+
+        private readonly IEventAggregator _eventAggregator;
+
+        private MemberInfo _newMemberInfo;
+        public MemberInfo NewMemberInfo
+        {
+            get { return _newMemberInfo; }
+            set { _newMemberInfo = value; }
+        }
+        private MemberInfo _originalInfo;
+        public MemberInfo OriginalInfo
+        {
+            get { return _originalInfo; }
+            set { _originalInfo = value; }
+        }
+        #endregion
 
         #region Bind
         private string _amendName;
@@ -51,28 +70,54 @@ namespace member_management.ViewModels
             get { return _amendAge; }
             set { _amendAge = value; }
         }
-
-        private MemberInfo _originalInfo;
-        public MemberInfo OriginalInfo
-        {
-            get { return _originalInfo; }
-            set { _originalInfo = value; }
-        }
         #endregion
 
-        //public ICommand SaveCommand { get; set; }
+        // public ICommand SaveCommand { get; set; }
 
-        public AmendMemberInfoWindowViewModel()
+        public AmendMemberInfoWindowViewModel(IEventAggregator eventAggregator)
         {
-            //SaveCommand = new DelegateCommand(SaveCmd);
+            // SaveCommand = new DelegateCommand(SaveCmd);
+            _eventAggregator = eventAggregator;
+            NewMemberInfo = new MemberInfo();
+            MemberSexListInit();
+        }
+
+        private void MemberSexListInit()
+        {
             AmendSexList = new ObservableCollection<string>()
             {
                 new string("남자"),
                 new string("여자")
             };
         }
-
         public bool SaveCmd()
+        {
+            bool isSaveSuccess = false;
+            try
+            {
+                if (String.IsNullOrEmpty(AmendName)) { MessageBox.Show("이름을 입력하세요."); }
+                else if (String.IsNullOrEmpty(AmendID)) { MessageBox.Show("ID를 입력하세요."); }
+                else if (String.IsNullOrEmpty(AmendSex)) { MessageBox.Show("성별을 입력하세요."); }
+                else if (String.IsNullOrEmpty(AmendAge)) { MessageBox.Show("나이를 입력하세요."); }
+                else
+                {
+                    NewMemberInfo.MemberName = AmendName;
+                    NewMemberInfo.MemberID = AmendID;
+                    NewMemberInfo.MemberSex = AmendSex;
+                    NewMemberInfo.MemberAge = AmendAge;
+                    _eventAggregator.GetEvent<AmendSuccessEvent>().Publish(new AmendSuccessEventHandler { AmendInfo = NewMemberInfo });
+                    isSaveSuccess = true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                isSaveSuccess = false;
+            }
+            return isSaveSuccess;
+        }
+
+        /*public bool SaveCmd()
         {
             bool isSaveSuccess = false;
             try
@@ -96,6 +141,6 @@ namespace member_management.ViewModels
                 // MessageBox.Show(e.Message);
                 return false;
             }
-        }
+        }*/ // before update eventAggregator
     }
 }

@@ -16,6 +16,7 @@ namespace member_management.Views
             InitializeComponent();
             viewModel = this.DataContext as MainWindowViewModel;
         }
+
         private void TextBoxClear()
         {
             MemberNameTextBox.Text = null;

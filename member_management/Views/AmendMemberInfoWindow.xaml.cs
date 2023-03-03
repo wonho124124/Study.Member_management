@@ -17,13 +17,13 @@ namespace member_management.Views
         public AmendMemberInfoWindow(MemberInfo member)
         {
             InitializeComponent();
-            _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;  //datacontext 없어도 view에서 viewmodel 접근가능
+            _vmAmend = this.DataContext as AmendMemberInfoWindowViewModel;  // datacontext 없어도 view에서 viewmodel 접근가능
             // SelectedMember = member;
             _vmAmend.OriginalInfo = member;
-            
 
             OriginalInfoView(member);
         }
+
         public void OriginalInfoView(MemberInfo member)
         {
            /* MemberNameTextBlock.Text = "이름 : " + member.MemberName;
@@ -54,10 +54,10 @@ namespace member_management.Views
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(_vmAmend.SaveCmd())
+            if (_vmAmend.SaveCmd())
             {
                 this.Close();
-            };   
+            };
         }
     }
 }
