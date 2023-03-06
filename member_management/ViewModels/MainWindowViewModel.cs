@@ -13,6 +13,7 @@ using member_management.Views;
 using member_management.Models;
 using Prism.Events;
 using member_management.Events;
+using System.Linq;
 
 namespace member_management.ViewModels
 {
@@ -140,6 +141,7 @@ namespace member_management.ViewModels
                         MemberInfoList.Add(member);
                     }
                 }
+                MemberInfoList = new ObservableCollection<MemberInfo>(MemberInfoList.OrderBy(x => x.MemberName));
             }
             catch (Exception e)
             {
@@ -246,5 +248,11 @@ namespace member_management.ViewModels
             File.WriteAllText(path, JsonMemberList.ToString());
         }
         #endregion
+
+
+        /*public void SortCmdName()
+        {
+            // MemberInfoList = new ObservableCollection<MemberInfo>(MemberInfoList.OrderBy(x => x.MemberID));
+        }*/
     }
 }

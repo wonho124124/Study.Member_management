@@ -61,36 +61,37 @@
         </Grid>
 
         <Grid Grid.Row="6" Margin="0, 0, 0, 0">
-            <ListView x:Name="MemberListView" ItemsSource="{Binding MemberInfoList}" SelectedItem="{Binding SelectedMember}" Width="330" Height="200" HorizontalAlignment="Center" BorderThickness="1" FontSize="10">
+            <ListView x:Name="MemberListView" ItemsSource="{Binding MemberInfoList}" SelectedItem="{Binding SelectedMember}" Width="330" Height="200" HorizontalAlignment="Center" BorderThickness="1" FontSize="10"
+                      GridViewColumnHeader.Click ="gridViewColumnHeader_Click" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="이름" Width="80">
-                            <GridViewColumn.CellTemplate>
+                        <GridViewColumn Header="이름" Width="80" DisplayMemberBinding="{Binding Path=MemberName}">
+                            <!--<GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberName}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                            </GridViewColumn.CellTemplate>-->
                         </GridViewColumn>
-                        <GridViewColumn Header="회원 ID" Width="120">
-                            <GridViewColumn.CellTemplate>
+                        <GridViewColumn Header="회원 ID" Width="120" DisplayMemberBinding="{Binding Path=MemberID}">
+                            <!--<GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberID}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                            </GridViewColumn.CellTemplate>-->
                         </GridViewColumn>
-                        <GridViewColumn Header="성별" Width="65">
-                            <GridViewColumn.CellTemplate>
+                        <GridViewColumn Header="성별" Width="65" DisplayMemberBinding="{Binding Path=MemberSex}">
+                            <!--<GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberSex}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                            </GridViewColumn.CellTemplate>-->
                         </GridViewColumn>
-                        <GridViewColumn Header="나이" Width="65">
-                            <GridViewColumn.CellTemplate>
+                        <GridViewColumn Header="나이" Width="65" DisplayMemberBinding="{Binding Path=MemberAge}">
+                            <!--<GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MemberAge}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                                 </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                            </GridViewColumn.CellTemplate>-->
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
