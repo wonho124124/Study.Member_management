@@ -172,13 +172,9 @@ namespace member_management.Views
         private void Sort(string header, ListSortDirection listSortDirection)
         {
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(this.MemberListView.ItemsSource);
-
             collectionView.SortDescriptions.Clear();
-
             SortDescription sortDescription = new SortDescription(header, listSortDirection);
-
             collectionView.SortDescriptions.Add(sortDescription);
-
             collectionView.Refresh();
         }
         #endregion
