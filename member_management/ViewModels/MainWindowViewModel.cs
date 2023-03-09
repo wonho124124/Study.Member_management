@@ -134,10 +134,10 @@ namespace member_management.ViewModels
                     foreach (JObject jsonMember in jsonMembers)
                     {
                         MemberInfo member = new MemberInfo();
-                        member.MemberName = jsonMember["이름"].ToString();
+                        member.MemberName = jsonMember["Info"]["이름"].ToString();
                         member.MemberID = jsonMember["ID"].ToString();
-                        member.MemberSex = jsonMember["성별"].ToString();
-                        member.MemberAge = jsonMember["나이"].ToString();
+                        member.MemberSex = jsonMember["Info"]["성별"].ToString();
+                        member.MemberAge = jsonMember["Info"]["나이"].ToString();
                         MemberInfoList.Add(member);
                     }
                 }
@@ -164,7 +164,8 @@ namespace member_management.ViewModels
         #region Cmd
         private void CloseCmd()
         {
-            JArray JsonMemberList = new JArray();
+            SaveCmd();
+            /*JArray JsonMemberList = new JArray();
             foreach (MemberInfo member in MemberInfoList)
             {
                 JObject m = new JObject(
@@ -175,7 +176,7 @@ namespace member_management.ViewModels
                 );
                 JsonMemberList.Add(m);
             }
-            File.WriteAllText(path, JsonMemberList.ToString());
+            File.WriteAllText(path, JsonMemberList.ToString());*/
         }
 
         public bool AddCmd()
@@ -195,8 +196,11 @@ namespace member_management.ViewModels
                     infos.MemberSex = this.MemberSex;
                     infos.MemberAge = this.MemberAge;
 
-                    MemberInfoList.Add(infos);
-                    IsAddSuccess = true;
+                    if(!isAlreadyexist(infos))
+                    {
+                        MemberInfoList.Add(infos);
+                        IsAddSuccess = true;
+                    }
                 }
             }
             catch (Exception e)
@@ -235,12 +239,15 @@ namespace member_management.ViewModels
             JArray JsonMemberList = new JArray();
             foreach (MemberInfo member in MemberInfoList)
             {
-                JObject m = new JObject(
+                JObject n = new JObject(
                     new JProperty("이름", member.MemberName),
-                    new JProperty("ID", member.MemberID),
                     new JProperty("성별", member.MemberSex),
                     new JProperty("나이", Convert.ToInt16(member.MemberAge))
                 );
+                JObject m = new JObject(
+                    new JProperty("ID", member.MemberID)
+                );
+                m.Add("Info", n);
                 JsonMemberList.Add(m);
             }
             // string stringMemberList = JsonConvert.SerializeObject(JsonMemberList, Formatting.Indented);
@@ -250,9 +257,20 @@ namespace member_management.ViewModels
         #endregion
 
 
-        /*public void SortCmdName()
+        public bool isAlreadyexist(MemberInfo member)
         {
-            // MemberInfoList = new ObservableCollection<MemberInfo>(MemberInfoList.OrderBy(x => x.MemberID));
-        }*/
+            bool isExist = false;
+
+            foreach (MemberInfo m in MemberInfoList)
+            {
+                if(member.MemberID == m.MemberID)
+                {
+                    isExist = true;
+                    MessageBox.Show("이미 존재하는 ID 입니다.");
+                }
+            }
+
+            return isExist;
+        }
     }
 }
