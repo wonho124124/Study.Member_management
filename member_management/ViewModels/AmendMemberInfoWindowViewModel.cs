@@ -142,5 +142,7 @@ namespace member_management.ViewModels
                 return false;
             }
         }*/ // before update eventAggregator
+
+
     }
 }

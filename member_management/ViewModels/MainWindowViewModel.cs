@@ -61,8 +61,8 @@ namespace member_management.ViewModels
             set { _memberID = value; }
         }
 
-        private ObservableCollection<string> _memberSexList;
-        public ObservableCollection<string> MemberSexList
+        private static ObservableCollection<string> _memberSexList;
+        public static ObservableCollection<string> MemberSexList
         {
             get { return _memberSexList; }
             set { _memberSexList = value; }
@@ -155,10 +155,17 @@ namespace member_management.ViewModels
         }
         private void ChangeInfo(MemberInfo AmendInfo)
         {
-            SelectedMember.MemberName = AmendInfo.MemberName;
-            SelectedMember.MemberID = AmendInfo.MemberID;
-            SelectedMember.MemberSex = AmendInfo.MemberSex;
-            SelectedMember.MemberAge = AmendInfo.MemberAge;
+            if (!isAlreadyexist(AmendInfo))
+            {
+                SelectedMember.MemberName = AmendInfo.MemberName;
+                SelectedMember.MemberID = AmendInfo.MemberID;
+                SelectedMember.MemberSex = AmendInfo.MemberSex;
+                SelectedMember.MemberAge = AmendInfo.MemberAge;
+            }
+            else
+            {
+                AmendCmd();
+            }
         }
 
         #region Cmd
